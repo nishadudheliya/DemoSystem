@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>Add Task</h1>
+<div class="container-fluid" [formGroup]="addTaskForm">
+  <div mat-dialog-content>
+    <div>
+      <label for="work">Work<span class="customRequired">* </span></label>
+      <input type="radio" formControlName="work" name="work" (change)="onChange($event)" id="project" value="Project" />
+      <span class="checkmark-radio"></span>
+      <label for="project" class="radiobtn-label">
+        Project
+      </label>
+      <input type="radio" formControlName="work" name="work" (change)="onChange($event)" id="learning" value="Learning" />
+      <span class="checkmark-radio"></span>
+      <label for="learning" class="radiobtn-label">
+        Learning
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="skill">
+        Skill Title<span class="customRequired">*</span>
+      </label>
+      <select id="skill" class="form-control" formControlName="skill">
+        <option value="angular">angular</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="hour">
+        Number of hours<span class="customRequired">*</span>
+      </label>
+      <input type="number" class="form-control" name="hours" formControlName="hour" id="hour" />
+    </div>
+    <div class="form-group">
+      <label for="description">
+        Update Content<span class="customRequired">*</span>
+      </label>
+      <textarea [(ngModel)]="infoValue" rows="2" cols="22" class="text-area mb-3 form-control" id="description"
+        [maxlength]="maxTextLength" formControlName="description">
+    </textarea>
+      <span class="counter">{{ infoValue.length }}<span>/5000</span></span>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button class="customButton btn btn-outline-dark" mat-button (click)="onCancel()">Cancel</button>
+    <button class="customButton btn btn-outline-dark" mat-button (click)="onSave()">Save</button>
+  </div>
+</div>

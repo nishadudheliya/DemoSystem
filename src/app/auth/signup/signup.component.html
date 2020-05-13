@@ -1,0 +1,101 @@
+<section>
+  <div class="main mt-5 mb-5 m-t0" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <form [formGroup]="registerForm">
+              <div class="login-body create-acc w-70">
+                <h2>Create your account</h2>
+                <div class="form-group mt-4">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      type="text"
+                      id="email"
+                      formControlName="email"
+                      name="email"
+                      placeholder="Enter email"
+                    />
+                      <mat-error *ngIf="registerForm.controls['email'].hasError('email') && registerForm.controls['email'].touched">
+                        Please enter a valid email address
+                      </mat-error>
+                      <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+                        Email is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group mt-4">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      formControlName="password"
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="Enter password"
+                    />
+                      <mat-error *ngIf="registerForm.controls['password'].hasError('minlength') && registerForm.controls['password'].touched">
+                        Password must be at least 8 characters
+                      </mat-error>
+                      <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+                        Password is <strong>required</strong>
+                      </mat-error>
+                </mat-form-field>
+                </div>
+                <div class="form-group mt-4">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      formControlName="confirmPassword"
+                      type="password"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      placeholder="Retype password"
+                    />
+                      <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
+                       Retyped Password is <strong>required</strong>
+                      </mat-error>
+                </mat-form-field>
+                <div class="mat-error" *ngIf="passwordMismatch">
+                  Password must match.
+                </div>
+                </div>
+                <div class="form-group mt-4 signUp-Terms none-mobile">
+                  <mat-checkbox 
+                  color="primary"
+                  (change)="onAgree($event)"
+                  formControlName="privacyPolicy">
+                  By clicking Sign Up, You are agree with our 
+                  <strong>Terms of Use</strong> and
+                  <strong>Privacy Policy.</strong>
+                  </mat-checkbox>
+                  <mat-error *ngIf="!isPrivacyPolicyChecked && submitted">
+                    Agree with our <strong>Terms of Use and Privacy Policy.</strong>
+                  </mat-error>
+                </div>
+                <div class="form-group mt-4 singUp-btn">
+                  <button (click)="onSubmit()" mat-raised-button color="primary" name="signUp" id="signUp">Sign Up</button>
+                </div>
+                <div class="category-group mobile-login mt-4">
+                  <div class="form-group">
+                    <div class="social-login">
+                      <a href="#"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="social-login social-google">
+                      <a [href]="safeGoogleUrl"><i class="fa fa-google"></i> Sign In with Google</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

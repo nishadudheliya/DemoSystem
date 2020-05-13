@@ -1,0 +1,64 @@
+<section>
+  <div class="main mt-5 mb-5 m-t0">
+    <div class="container">
+      <div class="row">  
+        <div class="col-lg-11">
+          <div class="card">
+            <div class="card-body">
+              <div class="login-body create-acc w-70">
+                <h4>Tasks</h4>
+                <button mat-raised-button (click)="onAddTask()">Add Task</button>
+                <div class="form-group mt-4">
+                  <mat-accordion>
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          Today Task
+                        </mat-panel-title>
+                        <mat-panel-description>
+                          Your work
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+
+                      <table mat-table [dataSource]="dataSource" class="mat-elevation-z12">
+                        <ng-container matColumnDef="Date">
+                          <th mat-header-cell *matHeaderCellDef> Date </th>
+                          <td mat-cell *matCellDef="let task"> {{task.Date}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Work">
+                          <th mat-header-cell *matHeaderCellDef> Work </th>
+                          <td mat-cell *matCellDef="let task"> {{task.Work}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Title">
+                          <th mat-header-cell *matHeaderCellDef> Title </th>
+                          <td mat-cell *matCellDef="let task"> {{task.Title}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Type">
+                          <th mat-header-cell *matHeaderCellDef> Type </th>
+                          <td mat-cell *matCellDef="let task"> {{task.Type}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Hours">
+                          <th mat-header-cell *matHeaderCellDef> Hours </th>
+                          <td mat-cell *matCellDef="let task"> {{task.Hours}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="Edit">
+                          <th mat-header-cell *matHeaderCellDef> Edit </th>
+                          <td mat-cell *matCellDef="let task"><mat-icon (click)="onEdit(task)">edit</mat-icon> </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+                      </mat-expansion-panel>
+                      </mat-accordion>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
